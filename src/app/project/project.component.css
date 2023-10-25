@@ -1,0 +1,49 @@
+body {
+    background-color: #fbfbfb;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+  }
+  
+  main {
+    margin-top: 58px;
+  }
+
+
+.project-title h3 {
+    text-align: center;
+    font-weight: bold;
+    margin-bottom: 2rem;
+  }
+  
+  .add-project {
+    /* display: none; */
+    border: 1px solid #dee2e6;
+    padding: 1rem;
+  }
+  
+  .add-project label {
+    font-weight: bold;
+  }
+  .add-project .save-btn {
+    float: right;
+    margin-bottom: 1rem;
+  }
+
+  .save-btn {
+    margin-top: 2rem;
+    width: 10rem;
+    
+  }
+
+
+
+  .add-project-btn
+  
+  {
+   margin-bottom: 1rem;
+    margin-top: 0.5rem;
+    float: right;
+    width: 10rem;
+  }

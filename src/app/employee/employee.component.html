@@ -1,0 +1,221 @@
+<body>
+  <!--Main layout-->
+  <main>
+    <div class="container pt-4">
+      <div class="employee-title">
+        <h3>Employees List <i class="far fa-id-card"></i></h3>
+      </div>
+
+      <!-- Search form -->
+      <div class="row justify-content-end">
+        <div class="col-md-4 search-form">
+          <div class="input-group">
+            <input
+              type="search"
+              class="form-control rounded"
+              placeholder="Search For Employee"
+              aria-label="Search"
+              aria-describedby="search-addon"
+              [(ngModel)]="searchQueryName"
+            />
+            <button
+              type="button"
+              class="btn btn-outline-primary"
+              (click)="searchEmployees()"
+            >
+              search
+            </button>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-12">
+            <div class="table-responsive">
+              <table class="table table-bordered">
+                <thead>
+                  <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">First Name</th>
+                    <th scope="col">Last Name</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Phone Number</th>
+                    <th scope="col">Gender</th>
+                    <th scope="col">Salary</th>
+                    <th scope="col">Position</th>
+                    <th scope="col">Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let employee of employees">
+                    <td>{{ employee.id }}</td>
+                    <td>{{ employee.firstname }}</td>
+                    <td>{{ employee.lastname }}</td>
+                    <td>{{ employee.email }}</td>
+                    <td>{{ employee.phonenumber }}</td>
+                    <td>{{ employee.gender }}</td>
+                    <td>${{ employee.salary }}</td>
+                    <td>{{ employee.position }}</td>
+                    <td>
+                      <a (click)="editEmployee(employee)" class="edit">
+                        <i class="fas fa-edit"></i>
+                      </a>
+                      <a
+                        (click)="employee.id && deleteEmployee(employee.id)"
+                        class="delete"
+                      >
+                        <i class="fa fa-trash-o"></i>
+                      </a>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <button
+              type="button"
+              class="btn btn-primary add-employee-btn"
+              (click)="toggleEmployeeForm()"
+            >
+              Add Employee
+              <i class="far fa-eye"></i>
+            </button>
+          </div>
+        </div>
+
+        <div class="add-employee" *ngIf="isFormVisible">
+          <form (ngSubmit)="onSubmit()" #userForm="ngForm">
+            <div class="row">
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label for="firstname">First Name</label>
+                  <input
+                    class="form-control"
+                    type="text"
+                    id="firstname"
+                    placeholder="First Name"
+                    name="firstname"
+                    [(ngModel)]="employee.firstname"
+                    required
+                  />
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label for="lastName">Last Name</label>
+                  <input
+                    class="form-control"
+                    type="text"
+                    id="lastname"
+                    placeholder="Last Name"
+                    name="lastname"
+                    [(ngModel)]="employee.lastname"
+                    required
+                  />
+                </div>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label for="email">Email</label>
+                  <input
+                    class="form-control"
+                    type="email"
+                    id="email"
+                    placeholder="Email"
+                    name="email"
+                    [(ngModel)]="employee.email"
+                    required
+                  />
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label for="phoneNumber">Phone Number</label>
+                  <input
+                    class="form-control"
+                    type="tel"
+                    id="phonenumber"
+                    placeholder="Phone Number"
+                    name="phonenumber"
+                    [(ngModel)]="employee.phonenumber"
+                    required
+                  />
+                </div>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label for="gender">Gender</label>
+                  <select
+                    class="form-control"
+                    type=""
+                    id="gender"
+                    placeholder="Gender"
+                    name="gender"
+                    [(ngModel)]="employee.gender"
+                    required
+                  >
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option>
+                  </select>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label for="salary">Salary</label>
+                  <input
+                    class="form-control"
+                    type="text"
+                    id="salary"
+                    placeholder="Salary"
+                    name="salary"
+                    [(ngModel)]="employee.salary"
+                    required
+                  />
+                </div>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label for="position">Position</label>
+                  <select
+                    class="form-control"
+                    type="text"
+                    id="position"
+                    placeholder="Position"
+                    name="position"
+                    [(ngModel)]="employee.position"
+                    required
+                  >
+                    <option value="Front-End">Front-End</option>
+                    <option value="Back-End">Back-End</option>
+                    <option value="Full-Stack">Full-Stack</option>
+                    <option value="Marketing">Marketing</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <button
+                type="submit"
+                class="btn btn-primary save-btn"
+                [disabled]="!userForm.valid"
+              >
+                {{ isEditMode ? "Update Employee" : "Add Employee"
+                }}<i class="fas fa-archive"></i>
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!--Main layout-->
+</body>

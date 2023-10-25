@@ -1,0 +1,62 @@
+<body>
+  <!--Main layout-->
+  <main>
+    <div class="container pt-4">
+      <div class="employee-attendance">
+        <h3>Employee Attendance <i class="fas fa-user-check"></i></h3>
+      </div>
+
+      <!-- Search form -->
+      <div class="row justify-content-end">
+        <div class="col-md-4 search-form">
+          <div class="input-group">
+            <input
+              type="search"
+              class="form-control rounded"
+              placeholder="Search For Employee"
+              aria-label="Search"
+              aria-describedby="search-addon"
+              [(ngModel)]="searchQueryName"
+            />
+            <button
+              type="button"
+              class="btn btn-outline-primary"
+              (click)="searchEmployees()"
+            >
+              search
+            </button>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-12">
+            <div class="table-responsive">
+              <table class="table table-bordered">
+                <thead>
+                  <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">Full Name</th>
+                    <th scope="col">Date</th>
+                    <th scope="col">Sign in</th>
+                    <th scope="col">Sign out</th>
+                    <th scope="col">Working Hours</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let employee of employees">
+                    <td>{{ employee.id }}</td>
+                    <td>{{ employee.firstname }} {{ employee.lastname }}</td>
+                    <td>{{ employee.date }}</td>
+                    <td>{{ employee.signin }}</td>
+                    <td>{{ employee.signout }}</td>
+                    <td>{{ calculateWorkingHours(employee) }}</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+</body>

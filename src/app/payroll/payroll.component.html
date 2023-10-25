@@ -1,0 +1,70 @@
+<body>
+  <main>
+    <div class="container pt-4">
+      <div class="employee-payroll">
+        <h3>
+          Employee Payroll <i class="fas fa-money-bill-wave fa-fw me-3"></i>
+        </h3>
+      </div>
+
+      <!-- Search form -->
+      <div class="row justify-content-end">
+        <div class="col-md-4 search-form">
+          <div class="input-group">
+            <input
+              type="search"
+              class="form-control rounded"
+              placeholder="Search For Employee"
+              aria-label="Search"
+              aria-describedby="search-addon"
+              [(ngModel)]="searchQueryName"
+            />
+            <button
+              type="button"
+              class="btn btn-outline-primary"
+              (click)="searchEmployees()"
+            >
+              search
+            </button>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-12">
+            <div class="table-responsive">
+              <table class="table table-bordered">
+                <thead>
+                  <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">Full Name</th>
+                    <th scope="col">Month</th>
+                    <th scope="col">Salary</th>
+                    <th scope="col">Loan</th>
+                    <th scope="col">Working Hours</th>
+                    <th scope="col">Total Pay</th>
+                    <th scope="col">Status</th>
+                    <!-- <th scope="col">Action</th> -->
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let employee of employees; let i = index">
+                    <ng-container *ngIf="payrolls[i]">
+                      <td>{{ employee.id }}</td>
+                      <td>{{ employee.firstname }} {{ employee.lastname }}</td>
+                      <td>{{ payrolls[i].month }}</td>
+                      <td>${{ employee.salary }}</td>
+                      <td>${{ payrolls[i].loan }}</td>
+                      <td>{{ calculateWorkingHours(employee) }}</td>
+                      <td>${{ calculateTotalPay() }}</td>
+                      <td>{{ payrolls[i].status }}</td>
+                    </ng-container>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+</body>

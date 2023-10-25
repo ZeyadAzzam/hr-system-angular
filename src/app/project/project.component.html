@@ -1,0 +1,151 @@
+<body>
+  <!--Main layout-->
+  <main>
+    <div class="container pt-4">
+      <div class="project-title">
+        <h3>Project List <i class="fas fa-project-diagram"></i></h3>
+      </div>
+
+      <!-- Search form -->
+      <div class="row justify-content-end">
+        <div class="col-md-4 search-form">
+          <div class="input-group">
+            <input
+              type="search"
+              class="form-control rounded"
+              placeholder="Search For Project"
+              aria-label="Search"
+              aria-describedby="search-addon"
+              [(ngModel)]="searchQueryName"
+            />
+            <button
+              type="button"
+              (click)="searchProject()"
+              class="btn btn-outline-primary"
+            >
+              search
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-12">
+          <div class="table-responsive">
+            <table class="table table-bordered">
+              <thead>
+                <tr>
+                  <th scope="col">ID</th>
+                  <th scope="col">Project Name</th>
+                  <th scope="col">Status</th>
+                  <th scope="col">Priority</th>
+                  <th scope="col">Start Date</th>
+                  <th scope="col">End Date</th>
+                  <th scope="col">Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let project of projects">
+                  <td>{{ project.id }}</td>
+                  <td>{{ project.projectName }}</td>
+                  <td>{{ getStatus(project) }}</td>
+                  <td>{{ project.priority }}</td>
+                  <td>{{ project.startDate }}</td>
+                  <td>{{ project.endDate }}</td>
+                  <td>
+                    <a (click)="editProject(project)" class="edit">
+                      <i class="fas fa-edit"></i>
+                    </a>
+                    <a
+                      (click)="project.id && deleteProject(project.id)"
+                      class="delete"
+                    >
+                      <i class="fa fa-trash-o"></i>
+                    </a>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <button
+            type="button"
+            class="btn btn-primary add-project-btn"
+            (click)="toggleProjectForm()"
+          >
+            Add Project <i class="far fa-eye"></i>
+          </button>
+        </div>
+      </div>
+
+      <div class="add-project" *ngIf="isFormVisible">
+        <form (ngSubmit)="onSubmit()" #userForm="ngForm">
+          <div class="row">
+            <div class="col-md-12">
+              <div class="form-group">
+                <label for="ProjectName">Project Name</label>
+                <input
+                  class="form-control"
+                  type="text"
+                  id="projectName"
+                  name="projectName"
+                  placeholder="Project Name"
+                  [(ngModel)]="project.projectName"
+                />
+              </div>
+            </div>
+            <div class="col-md-12">
+              <div class="form-group">
+                <label for="priority">Priority</label>
+                <select
+                  class="form-control"
+                  type="text"
+                  id="priority"
+                  name="priority"
+                  placeholder="Priority"
+                  [(ngModel)]="project.priority"
+                >
+                  <option value="High">High</option>
+                  <option value="Medium">Medium</option>
+                  <option value="Low">Low</option>
+                </select>
+              </div>
+            </div>
+            <div class="col-md-12">
+              <div class="form-group">
+                <label for="startDate">Start Date</label>
+                <input
+                  class="form-control"
+                  type="date"
+                  id="startDate"
+                  name="startDate"
+                  placeholder="Start Date"
+                  [(ngModel)]="project.startDate"
+                />
+              </div>
+            </div>
+            <div class="col-md-12">
+              <div class="form-group">
+                <label for="endDate">End Date</label>
+                <input
+                  class="form-control"
+                  type="date"
+                  id="endDate"
+                  name="endDate"
+                  placeholder="End Date"
+                  [(ngModel)]="project.endDate"
+                />
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <button type="submit" class="btn btn-primary save-btn">
+              {{ isEditMode ? "Update" : "Add" }} <i class="fas fa-archive"></i>
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </main>
+
+  <!--Main layout-->
+</body>

@@ -1,0 +1,44 @@
+body {
+    background-color: #fbfbfb;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+  }
+  
+  main {
+    margin-top: 58px;
+  }
+
+
+.employee-title h3 {
+    text-align: center;
+    font-weight: bold;
+    margin-bottom: 2rem;
+  }
+  .employee-title i {
+    color: black;
+  }
+  
+  .add-employee-btn {
+    margin-bottom: 1rem;
+    margin-top: 0.5rem;
+    float: right;
+  }
+  
+  .add-employee {
+    border: 1px solid #dee2e6;
+    padding: 1rem;
+  }
+
+
+  
+  .add-employee label {
+    font-weight: bold;
+  }
+  
+  .save-btn {
+    margin-top: 2rem;
+    width: 10rem;
+    float: right;
+  }

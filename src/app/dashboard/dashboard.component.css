@@ -1,0 +1,91 @@
+body {
+    background-color: #fbfbfb;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+  }
+  
+  main {
+    margin-top: 58px;
+  }
+
+
+
+  /* end sidebar navbar edit */
+  
+  /* Dashboard card edit */
+  
+  /* Employee Working Card */
+  .employee-card {
+    padding: 2rem;
+    background-color: #0f7d7d;
+    color: #fff;
+    text-align: center;
+    font-weight: bold;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Total Earnings Card */
+  .total-earing {
+    padding: 2rem;
+    background-color: #0f7d7d;
+    color: #fff;
+    text-align: center;
+    font-weight: bold;
+    font-size: 1.5rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Announcement Card */
+  .Announcement-card {
+    padding: 2.7rem;
+    background-color: #0f7d7d;
+    color: #fff;
+    text-align: center;
+    font-weight: bold;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+
+  .Announcement-card a {
+
+    color: white;
+    text-decoration: none;
+  }
+
+  
+  /* Off/Leave Card */
+  .off-leave-card {
+    padding: 2rem;
+    background-color: #0f7d7d;
+    color: #fff;
+    text-align: center;
+    font-weight: bold;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Project Running Card */
+  .project-running {
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Icon Styling */
+  .card-title i {
+    font-size: 2rem;
+    margin-right: 10px;
+  }
+
+
+  @media (min-width: 991.98px) {
+    main {
+      padding-left: 240px;
+    }
+  }
+  
+

@@ -1,0 +1,95 @@
+<body>
+  <!--Main layout-->
+  <main>
+    <div class="container pt-4">
+      <div class="row">
+        <div class="col-md-6 mb-2">
+          <!-- Employee Working Card -->
+          <div class="card employee-card">
+            <div class="card-body">
+              <h5 class="card-title">
+                <i class="fas fa-users"></i> Employees Working
+              </h5>
+              <p class="card-text">Total: 4</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-6 mb-2">
+          <!-- Total Earnings Card -->
+          <div class="card total-earing">
+            <div class="card-body">
+              <h5 class="card-title">
+                <i class="fas fa-dollar-sign"></i> Total Earnings
+              </h5>
+              <p class="card-text">$423.300</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-6 mb-2">
+          <!-- Announcement Card -->
+          <div class="card Announcement-card">
+            <div class="card-body">
+              <h5 class="card-title">
+                <a routerLink="/announcement">
+                <i class="fas fa-bullhorn"></i> Announcement
+                </a>
+              </h5>
+              <p class="card-text">
+
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-6 mb-2">
+          <!-- Employee Working Card -->
+          <div class="card employee-card">
+            <div class="card-body">
+              <h5 class="card-title">
+                <i class="fas fa-user-clock"></i> Off/Leave
+              </h5>
+              <p class="card-text">5 employees left</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-12 mb-4">
+        <!-- Project Running Card -->
+        <div class="card project-card">
+          <div class="card-body">
+            <h5 class="card-title">
+              <i class="fas fa-tasks"></i> Projects Running
+            </h5>
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th scope="col">ID</th>
+                  <th scope="col">Assigned</th>
+                  <th scope="col">Name</th>
+                  <th scope="col">Due date</th>
+                  <th scope="col">Priority</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let employee of employees; let i = index">
+                  <ng-container *ngIf="projects[i]">
+                    <td>{{ employee.id }}</td>
+                    <td>{{ employee.firstname }} {{ employee.lastname }}</td>
+                    <td>{{ projects[i].projectName }}</td>
+                    <td>${{ projects[i].endDate }}</td>
+                    <td>{{ projects[i].priority }}</td>
+                  </ng-container>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!--Main layout-->
+</body>

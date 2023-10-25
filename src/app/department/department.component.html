@@ -1,0 +1,68 @@
+<body>
+  <!--Main layout-->
+
+  <main>
+    <div class="container pt-4">
+      <div class="row">
+        <div class="col-md-4 mb-2">
+          <!-- Add department form -->
+          <div class="card add-department-form">
+            <div class="card-body">
+              <h5 class="card-title">Add Department</h5>
+              <form (ngSubmit)="onSubmit()">
+                <div class="form-group">
+                  <input
+                    class="form-control"
+                    type="text"
+                    id="departmentName"
+                    name="department"
+                    placeholder="Enter department name"
+                    [(ngModel)]="department.department"
+                  />
+                </div>
+                <div class="text-center mt-3">
+                  <button type="submit" class="btn btn-success">Save</button>
+                  <button
+                    type="button"
+                    class="btn btn-secondary ml-2 cancel-btn"
+                  >
+                    Cancel
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+
+        <!-- Add department table -->
+        <div class="col-md-4 mb-4 department-card">
+          <table class="table department-table">
+            <thead class="thead-department">
+              <tr>
+                <th scope="col">Department</th>
+                <th scope="col">Employees</th>
+                <th scope="col">Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let department of departments">
+                
+                <!-- department name -->
+                <td>{{ department.department }}</td> 
+                <td>{{ department.employeeNumber }}</td>
+                <td>
+                  <a
+                    (click)="department.id && deleteDepartment(department.id)"
+                    class="delete"
+                  >
+                    <i class="fa fa-trash-o"></i>
+                  </a>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </main>
+</body>
