@@ -55,7 +55,7 @@
                       <td>${{ employee.salary }}</td>
                       <td>${{ payrolls[i].loan }}</td>
                       <td>{{ calculateWorkingHours(employee) }}</td>
-                      <td>${{ calculateTotalPay() }}</td>
+                      <td>${{ calculateTotalPay(employee, payrolls[i]) }}</td>
                       <td>{{ payrolls[i].status }}</td>
                     </ng-container>
                   </tr>

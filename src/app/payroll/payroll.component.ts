@@ -20,6 +20,8 @@ export class PayrollComponent implements OnInit {
 
   payroll:Payroll =new Payroll();
   payrolls: Payroll[] = [];
+  totalPays: number[] = [];
+
   
   id: number =0;
 
@@ -44,9 +46,6 @@ export class PayrollComponent implements OnInit {
   );
     
   }
-
-
-  
 
   private getPayroll() {
     this.payrollService.getPayrollList().subscribe(data => {
@@ -76,9 +75,13 @@ export class PayrollComponent implements OnInit {
         payrollMonth: payroll.month || '',
         payrollLoan: payroll.loan || '',
         payrollStatus: payroll.status || '',
+
+        
       });
     }
   }
+
+  
   editPayroll(payroll: Payroll) {
     this.payroll={...payroll};
     
@@ -114,16 +117,21 @@ export class PayrollComponent implements OnInit {
     return 'N/A';
   }
 
-  calculateTotalPay(): number {
-    
-    if (this.payroll && typeof this.employee.salary === 'number' && typeof this.payroll.loan === 'number') {
-      return this.employee.salary - this.payroll.loan;
-    } else {
-      return 0;
-    }
+
+  // working 
+calculateTotalPay(employee: Employee, payroll: Payroll): number {
+  if (
+    employee &&
+    typeof employee.salary === 'number' &&
+    payroll &&
+    typeof payroll.loan === 'number'
+  ) {
+    return employee.salary - payroll.loan;
+  } else {
+    return 0;
   }
-
-
+}
+  
 
   resetEmployeeList() {
       this.getEmployees();
